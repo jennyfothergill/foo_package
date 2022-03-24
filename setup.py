@@ -7,9 +7,17 @@ here = path.abspath(path.dirname(__file__))
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
+def myversion():
+    from setuptools_scm.version import get_local_dirty_tag
+    def clean_scheme(version):
+        return get_local_dirty_tag(version) if version.dirty else '+clean'
+
+    return {'local_scheme': clean_scheme}
+
 setup(
     name="foo_package",
     version="0.0.1",
+    use_scm_version=myversion,
     author="Jenny Fothergill",
     author_email="jennyfothergill@boisestate.edu",
     description="A small example package",
