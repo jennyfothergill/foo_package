@@ -1,0 +1,6 @@
+name: foo_package
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - python=3.9
